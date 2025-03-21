@@ -6,7 +6,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 import './cards.css'
 import { createBrowserRouter, RouterProvider } from 'react-router';
-const router=createBrowserRouter([{path:'',element:<App/>,children:[]}]);
+import Login from './components/login.jsx';
+import Signup from './components/signup.jsx';
+import Cards from './components/cards.jsx';
+const router=createBrowserRouter([{path:'/',element:<App/>,children:[
+  {path:'/login',element:<Login/>},
+  {path:'/signup',element:<Signup/>},
+  {path:'/cards',element:<Cards/>},
+]}]);
 
 
 createRoot(document.getElementById('root')).render(
