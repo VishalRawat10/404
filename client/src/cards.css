@@ -1,0 +1,25 @@
+.cardHeading{
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+.cardcontent{
+    background-color: antiquewhite;
+    border-bottom: 1px solid grey;
+   & ul{ display: flex;}
+    & li{
+        font-size: 1rem;
+        margin:0.8rem;
+        list-style: none;
+    }
+}
+
+.cardimage img{
+    aspect-ratio: 1/1;
+    width:20%;
+}
+.cardbody{
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-columns: repeat(3,200px);
+    width:100%;
+}
