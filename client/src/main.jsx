@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { UserProvider } from './context/userContext.jsx';
 
 import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,6 +19,7 @@ const router=createBrowserRouter([{path:'/',element:<App/>,children:[
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <UserProvider>
+    <RouterProvider router={router}></RouterProvider></UserProvider>
   </StrictMode>
 )

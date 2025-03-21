@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {useGSAP} from "@gsap/react"
 import {gsap} from 'gsap'
+import { UserContext } from '../context/userContext';
+import axiosInstance from '../api/axiosInstance';
+import { useNavigate } from 'react-router';
 function Login() {
+  const { setUserData, setToken, userData} = useContext(UserContext);
+  console.log(userData);
+  const navigate = useNavigate();
   const [user,setUser]=useState({
     email:'',
     password:'',
@@ -9,15 +15,27 @@ function Login() {
   const handleInput=(e)=>{
 const {name,value}=e.target;
 setUser((prev)=>({...prev,[name]:value}))
-
   }
 
   useGSAP(()=>{gsap.from('span',{x:30,scale:0.5,duration:1,delay:0.5})})
   
-  
+  const handleLogin = async(e)=>{
+    e.preventDefault();
+    try{
+      const res = await axiosInstance.post("/user/login",user);
+      console.log(res.data.user);
+      setUserData(res.data.user);
+      setToken(res.data.token);
+      navigate("/");
+    }catch(err){
+      console.log(err);
+      setUser("");
+      prompt(err.response.message);
+    }
+  }
   return <>
     <div className='Login'>
-      <form className='formContainer tcenter'>
+      <form className='formContainer tcenter' onSubmit={(e)=>handleLogin(e)}>
     
     <h1 class="h2 mb-3 fw-normal"><span className='heading_initial'>L</span><span>ogin</span> <span className='heading_initial'>T</span>
     <span>o</span> <span className='heading_initial'>Y</span><span>our</span> <span className='heading_initial'>Acc</span><span>ount</span>
