@@ -1,6 +1,7 @@
 .cardHeading{
     font-size: 1.5rem;
     font-weight: 800;
+    margin-bottom: 3%;
 }
 .cardcontent{
     background-color: antiquewhite;
@@ -12,14 +13,46 @@
         list-style: none;
     }
 }
-
-.cardimage img{
-    aspect-ratio: 1/1;
-    width:20%;
+.cardHeading::before{
+    content: '';
+    position: absolute;
+    border-radius: 4%;
+    -webkit-border-radius: 4%;
+    -moz-border-radius: 4%;
+    -ms-border-radius: 4%;
+    -o-border-radius: 4%;
+    background-color: blueviolet;
+    border:2px solid red;
+    width:10%;
 }
-.cardbody{
-    background-color: antiquewhite;
-    display: grid;
-    grid-template-columns: repeat(3,200px);
+.cardimage img{
+    border-radius: 5%;
+    -webkit-border-radius: 5%;
+    -moz-border-radius: 5%;
+    -ms-border-radius: 5%;
+    -o-border-radius: 5%;
     width:100%;
 }
+.cardbody{
+    
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.cardcontainer{
+   
+    padding: 5%;
+    & .cardname{
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+    }
+    & .destinationDistance{
+        font-weight: 350;
+    }
+    & .destinationPrice{
+        font-weight: 750;
+        font-size: 1.4rem;
+    }
+}
+
